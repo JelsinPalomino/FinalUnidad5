@@ -46,6 +46,15 @@ class PaymentUsersViewUser(ModelViewSet):
     def get_serializer_class(self):
         return PaymentUsersSerializers
 
+    def create(self, request, *args, **kwargs):
+        payment_user_id = super().create(request, *args, **kwargs)
+        last_pay = PaymentUser.objects.order_by('-id').first()
+        payment = PaymentUser.objects.get(id=last_pay.id)
+        if payment.expiration_date < payment.payment_date:
+            penalty = payment.amount * 0.20
+            expired_payment = ExpiredPayments(payment_user_id=payment,penalty_free_amount=penalty)
+            expired_payment.save()
+        return payment_user_id
 
 # TODO: Expired Payment
 class ExpiredPaymentViewUser(ModelViewSet):

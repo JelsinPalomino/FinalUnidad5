@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework.authtoken',
     'drf_spectacular',
+    'corsheaders',
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -56,6 +57,8 @@ AUTH_USER_MODEL = 'users.User'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # cors
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -184,3 +187,6 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
     # OTHER SETTINGS
 }
+
+CORS_ALLOWED_ORIGINS = ["http://127.0.0.1:5500","http://127.0.0.1:5000"]
+# CORS_ALLOW_ALL_ORIGINS = True
