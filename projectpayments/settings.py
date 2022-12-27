@@ -188,5 +188,5 @@ SPECTACULAR_SETTINGS = {
     # OTHER SETTINGS
 }
 
-CORS_ALLOWED_ORIGINS = ["https://finalunidad5-production.up.railway.app"]
+CORS_ALLOWED_ORIGINS = ["http://127.0.0.1:5500","http://127.0.0.1:5000","https://finalunidad5-production.up.railway.app"]
 # CORS_ALLOW_ALL_ORIGINS = True
