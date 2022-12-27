@@ -18,9 +18,9 @@ class ServicesViewUser(ModelViewSet):
     def get_permissions(self):
         permission_classes = []
         if self.action == 'list' or self.action == 'retrieve':
-            permission_classes = [IsAuthenticated]
+            permission_classes = [AllowAny]
         elif self.action == 'update' or self.action == 'partial_update' or self.action == 'destroy' or self.action == 'retrieve' or self.action == 'create':
-            permission_classes = [IsAdminUser]
+            permission_classes = [AllowAny]
         return [permissions() for permissions in permission_classes]
     def get_serializer_class(self):
         return ServicesSerializers
